@@ -18,9 +18,11 @@ public class FileWriterMultiThred {
     String[] fileStores;
     String csvFileTarget;
     List<String[]> listPreWrite;
+    int cores = Runtime.getRuntime().availableProcessors();
 
-    ExecutorService executorService = newFixedThreadPool(10);
+    ExecutorService executorService = newFixedThreadPool(cores * 2);
     CSVWriter csvWriter;
+
 
     public FileWriterMultiThred(String[] fileStores, String csvFileTarget) {
         this.fileStores = fileStores;
