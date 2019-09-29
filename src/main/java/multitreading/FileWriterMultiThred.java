@@ -53,7 +53,7 @@ public class FileWriterMultiThred {
                     .sorted((o1, o2) -> o2[4].compareTo(o1[4]))
                     .forEach(x -> {
                         if (map.size() > 999) {return;}
-                        if (map.containsKey(x[0]) || map.get(x[0]) < 20) {
+                        if (!map.containsKey(x[0]) || (map.containsKey(x[0]) && map.get(x[0]) < 20)) {
                             map.put(x[0], map.get(x[0]) + 1);
                             csvWriter.writeNext(x);
                         }
